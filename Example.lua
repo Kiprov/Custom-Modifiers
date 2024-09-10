@@ -1,6 +1,6 @@
 -- Documentations At: https://github.com/iimateiYT/Custom-Modifiers/blob/main/README.md
 
-local CustomModifiers = loadstring(game:HttpGet('https://github.com/iimateiYT/Custom-Modifiers/blob/main/Source.lua'))()
+local CustomModifiers = loadstring(game:HttpGet('https://raw.githubusercontent.com/iimateiYT/Custom-Modifiers/main/Source.lua'))()
 
 CustomModifiers:ToggleConnotations(true)
 

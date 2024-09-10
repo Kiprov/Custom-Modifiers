@@ -35,9 +35,28 @@ CustomModifiers:CreateModifier({
 	Color = Color3.fromRGB(255, 222, 189),
 	Category = "Example Category",
 	Sort = 1,
-	Merge = nil,
+	Merge = "Combine",
 	Bonus = 9999,
-	Solo = true,
+	Solo = false,
+	Penalties = {
+		NoRift = true, 
+		NoProgress = true
+	},
+	Unlock = "Join",
+	Activation = [[
+		print("Custom Code Logic In Here!")
+	]]
+})
+
+CustomModifiers:CreateModifier({
+	Title = "Example Modifier 2",
+	Desc = "This is an example custom modifier!",
+	Color = Color3.fromRGB(255, 222, 189),
+	Category = "Example Category",
+	Sort = 2,
+	Merge = "Combine",
+	Bonus = 9999,
+	Solo = false,
 	Penalties = {
 		NoRift = true, 
 		NoProgress = true

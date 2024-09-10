@@ -491,7 +491,7 @@ Players.LocalPlayer.OnTeleport:Connect(function(_, PlaceId)
 		TeleportService:SetTeleportSetting("ModifierData", ModifierData)
 		TeleportService:SetTeleportSetting("CategoryData", Modifiers.categories)
 		
-		QueueTeleport("loadstring(game:HttpGet('https://github.com/iimateiYT/Custom-Modifiers/blob/main/Source.lua'))()")
+		QueueTeleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/iimateiYT/Custom-Modifiers/main/Source.lua'))()")
 
 		for _, Modifier in pairs(ModifierData) do
 			if Modifier.Activation then

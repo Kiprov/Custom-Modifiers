@@ -1,7 +1,8 @@
 # Custom Doors Modifiers Documentation
 
 ## Needed Executor Functions
-### `queue_on_teleport` **- Needed To Use Modifiers In-Game. To Bypass, Re-Execute In-Game.**
+### `require` **- Needed to require and actually make changes to modulescripts.**
+### `queue_on_teleport` **- Needed To Use Modifiers In-Game.**
 ### `hookmetamethod` **- Needed To Create Elevators.**
 ### `getsenv` **- Needed To Reload Modifiers.**
 ### `getconnections` **- Needed To Make Caption Messages.**

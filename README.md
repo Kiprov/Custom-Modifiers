@@ -9,7 +9,7 @@
 
 ## Loadstring / Library
 ```lua
-local CustomModifiers = loadstring(game:HttpGet(''))()
+local CustomModifiers = loadstring(game:HttpGet('https://raw.githubusercontent.com/iimateiYT/Custom-Modifiers/main/Source.lua'))()
 ```
 
 ## Checks

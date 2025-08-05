@@ -147,6 +147,7 @@ function CreateFloor(FloorAttributes)
 		label.TextColor3 = FloorAttributes.FontColor or Color3.fromRGB(255, 222, 189)
 		newChooseFloor.UIStroke.Color = FloorAttributes.Theme or Color3.fromRGB(252, 219, 187)
 		newChooseFloor.MouseButton1Click:Connect(function()
+		    print("clicked")
 		    ChooseFloor.Visible = false
 		    CreateElevator.Visible = true
 		    for i,v in next, CreateElevator.List.Floors:GetChildren() do

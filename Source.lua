@@ -63,6 +63,7 @@ local FunctionTable = {
 local PlayerGui = Players.LocalPlayer.PlayerGui
 local MainUI = PlayerGui:WaitForChild("MainUI")
 local CreateElevator = MainUI:WaitForChild("LobbyFrame"):WaitForChild("CreateElevator")
+local ChooseFloor = MainUI:WaitForChild("LobbyFrame"):WaitForChild("ChooseFloor")
 
 -- Variables
 local ElevatorExists = false
@@ -123,7 +124,7 @@ function CreateCategory(CategoryAttributes)
 end
 
 function CreateFloor(FloorAttributes)
-	if not CreateElevator.List.Floors:FindFirstChild(FloorAttributes.Title or "[Floor]") then
+	if not CreateElevator.List.Floors:FindFirstChild(FloorAttributes.Title or "[Floor]") and not ChooseFloor.List:FindFirstChild(FloorAttributes.Title or "[Floor]") then
 		local newFloor = CreateElevator.List.Floors.Hotel:Clone()
 		newFloor.Visible = false
 		newFloor.Parent = CreateElevator.List.Floors
@@ -133,6 +134,29 @@ function CreateFloor(FloorAttributes)
 		newFloor.Font = FloorAttributes.Font or newFloor.Font
 		newFloor.BackgroundColor3 = FloorAttributes.Theme or Color3.fromRGB(252, 219, 187)
 		newFloor.TextColor3 = FloorAttributes.FontColor or Color3.fromRGB(255, 222, 189)
+		local newChooseFloor = ChooseFloor.List.Hotel:Clone()
+		local label = newChooseFloor.Hotel
+		newChooseFloor.Parent = ChooseFloor.List
+		newChooseFloor.Name = FloorAttributes.Title or "[Floor]"
+		label.Name = FloorAttributes.Title or "[Floor]"
+		label.Text = FloorAttributes.Title or "[Floor]"
+		label.Background.Image = FloorAttributes.Image or ""
+		label.Font = FloorAttributes.Font or newFloor.Font
+		label.BackgroundColor3 = FloorAttributes.Theme or Color3.fromRGB(252, 219, 187)
+		newChooseFloor.BackgroundColor3 = FloorAttributes.Theme or Color3.fromRGB(252, 219, 187)
+		label.TextColor3 = FloorAttributes.FontColor or Color3.fromRGB(255, 222, 189)
+		newChooseFloor.UIStroke.Color = FloorAttributes.Theme or Color3.fromRGB(252, 219, 187)
+		newChooseFloor.MouseButton1Click:Connect(function()
+		    ChooseFloor.Visible = false
+		    CreateElevator.Visible = true
+		    for i,v in next, CreateElevator.List.Floors:GetChildren() do
+		        if v:IsA("TextLabel") then
+		            v.Visible = false
+		        end
+		    end
+		    newFloor.Visible = true
+		    CustomModifiers:UpdateFloorStuff()
+		end)
 		shared.CustomFloors += 1
 	end
 

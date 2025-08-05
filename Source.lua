@@ -123,10 +123,10 @@ function CreateCategory(CategoryAttributes)
 end
 
 function CreateFloor(FloorAttributes)
-	if not CreateElevator.Floors:FindFirstChild(FloorAttributes.Title or "[Floor]") then
-		local newFloor = CreateElevator.Floors.Hotel:Clone()
+	if not CreateElevator.List.Floors:FindFirstChild(FloorAttributes.Title or "[Floor]") then
+		local newFloor = CreateElevator.List.Floors.Hotel:Clone()
 		newFloor.Visible = false
-		newFloor.Parent = CreateElevator.Floors
+		newFloor.Parent = CreateElevator.List.Floors
 		newFloor.Name = FloorAttributes.Title or "[Floor]"
 		newFloor.Text = FloorAttributes.Title or "[Floor]"
 		newFloor.Background.Image = FloorAttributes.Image or ""
@@ -197,7 +197,7 @@ function CustomModifiers:DeleteFloor(Floor)
 		CustomModifiers:Connotation('Deleted Floor "' .. Floor .. '".')
 		CustomModifiers:ReloadModifiers()
 		shared.CustomFloors -= 1
-		CreateElevator.Floors.Visible = shared.CustomFloors >= 100
+		CreateElevator.List.Floors.Visible = shared.CustomFloors >= 100
 	else
 		CustomModifiers:Caption('Error Deleting Floor "' .. Floor .. '".')
 	end
@@ -245,7 +245,7 @@ function CustomModifiers:RestoreFloor(Floor)
 		CustomModifiers:Connotation('Restored Floor "' .. Floor .. '".')
 		CustomModifiers:ReloadModifiers()
 		shared.CustomFloors += 1
-		CreateElevator.Floors.Visible = shared.CustomFloors >= 100
+		CreateElevator.List.Floors.Visible = shared.CustomFloors >= 100
 	else
 		CustomModifiers:Caption('Error Restoring Floor "' .. Floor .. '".')
 	end
@@ -346,7 +346,7 @@ function CustomModifiers:CreateFloor(Arguements)
 		Moddable = Arguements.Moddable
 	})
 
-	CreateElevator.Floors.Visible = shared.CustomFloors >= 100
+	CreateElevator.List.Floors.Visible = shared.CustomFloors >= 100
 	shared.EveryFloor[Arguements.Title] = AccessibleFloors[Arguements.Title]
 	CustomModifiers:Connotation('Created Floor "' .. Arguements.Title .. '".')
 	CustomModifiers:ReloadModifiers()
@@ -409,7 +409,7 @@ function CustomModifiers:GetFloorCount()
 end
 
 function CustomModifiers:GetCurrentFloor()
-	for _, Floor in pairs(CreateElevator.Floors:GetChildren()) do
+	for _, Floor in pairs(CreateElevator.List.Floors:GetChildren()) do
 		if Floor:IsA("TextLabel") and Floor.Visible then
 			return Floor.Name
 		end
@@ -429,7 +429,7 @@ end
 
 function CustomModifiers:UpdateFloorStuff()
 	task.wait()
-	for _, Floor in pairs(CreateElevator.Floors:GetChildren()) do
+	for _, Floor in pairs(CreateElevator.List.Floors:GetChildren()) do
 		if Floor:IsA("TextLabel") and Floor.Visible and AccessibleFloors[Floor.Name] then
 			Modifiers.categories = AccessibleFloors[Floor.Name].Categories
 			Modifiers.mods = AccessibleFloors[Floor.Name].Mods
@@ -463,15 +463,15 @@ function CustomModifiers:EnableFloor(Floor, Status)
 end
 
 -- Handle Switch
-CreateElevator.Floors.MouseButton1Down:Connect(function()
+CreateElevator.List.Floors.MouseButton1Down:Connect(function()
 	CustomModifiers:UpdateFloorStuff()
 end)
 
-CreateElevator.Floors.NavLeft.MouseButton1Down:Connect(function()
+CreateElevator.List.Floors.NavLeft.MouseButton1Down:Connect(function()
 	CustomModifiers:UpdateFloorStuff()
 end)
 
-CreateElevator.Floors.NavRight.MouseButton1Down:Connect(function()
+CreateElevator.List.Floors.NavRight.MouseButton1Down:Connect(function()
 	CustomModifiers:UpdateFloorStuff()
 end)
 

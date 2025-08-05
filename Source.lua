@@ -293,7 +293,7 @@ function CustomModifiers:CreateModifier(Arguements)
 		CustomModifiers:Caption("Go through the pages on the Modifiers frame to spawn the modifiers.")
 		
 		repeat
-			for _, ModifierButton in pairs(CreateElevator.Modifiers:GetChildren()) do
+			for _, ModifierButton in pairs(CreateElevator.SidePanel.Modifiers:GetChildren()) do
 				if ModifierButton:IsA("TextButton") and ModifierButton.Name == Arguements.Title then
 					Found = true
 					break
@@ -482,7 +482,7 @@ Players.LocalPlayer.OnTeleport:Connect(function(_, PlaceId)
 
 		local ModifierData = {}
 
-		for _, Modifier in pairs(CreateElevator.Modifiers:GetChildren()) do
+		for _, Modifier in pairs(CreateElevator.SidePanel.Modifiers:GetChildren()) do
 			if Modifier:IsA("TextButton") and Modifier.BackgroundTransparency <= 0.7 then
 				ModifierData[Modifier.Name] = Modifiers.mods[Modifier.Name]
 			end
@@ -517,7 +517,7 @@ workspace.Lobby.LobbyElevators.ChildAdded:Connect(function(Elevator)
 		local TempMods = MainUI.LobbyFrame:WaitForChild("TempMods")
 		local BigListActive = false
 
-		for _, ModifierButton in pairs(CreateElevator.Modifiers:GetChildren()) do
+		for _, ModifierButton in pairs(CreateElevator.SidePanel.Modifiers:GetChildren()) do
 			if ModifierButton:IsA("TextButton") and ModifierButton.BackgroundTransparency <= 0.7 then
 				ModifierCount += 1
 			end
@@ -538,7 +538,7 @@ workspace.Lobby.LobbyElevators.ChildAdded:Connect(function(Elevator)
 			end
 		end
 
-		for _, Modifier in pairs(CreateElevator.Modifiers:GetChildren()) do
+		for _, Modifier in pairs(CreateElevator.SidePanel.Modifiers:GetChildren()) do
 			if Modifier:IsA("TextButton") and Modifier.BackgroundTransparency <= 0.7 then
 				if BigListActive then
 					if TempMods.BigList:FindFirstChild(Modifier.Name) then

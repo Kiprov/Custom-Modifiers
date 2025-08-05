@@ -154,6 +154,7 @@ function CreateFloor(FloorAttributes)
 		            v.Visible = false
 		        end
 		    end
+		    wait()
 		    newFloor.Visible = true
 		    CustomModifiers:UpdateFloorStuff()
 		end)
